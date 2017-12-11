@@ -1,0 +1,23 @@
+---
+# OS-Specific include of variables
+# - name: Include OS-specific variables.
+#   include_vars: "{{ ansible_os_family }}.yml"
+#   tags:
+#     - ohmyzsh
+#     - ohmyzsh_requirements
+#     - ohmyzsh_install
+
+# Install required packages
+- import_tasks: packages.yml
+  tags:
+    - ohmyzsh
+    - ohmyzsh_requirements
+
+# Install ohmyzsh
+- include_tasks: ohmyzsh.yml
+  with_items: "{{ ohmyzsh_users }}"
+  loop_control:
+    loop_var: user
+  tags:
+    - ohmyzsh
+    - ohmyzsh_install
