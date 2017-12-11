@@ -8,9 +8,9 @@ sudo: true
 env:
   - lxd_container_alias: centos/7/amd64
   - lxd_container_alias: centos/6/amd64
+  - lxd_container_alias: ubuntu/zesty/amd64
   - lxd_container_alias: ubuntu/xenial/amd64
   - lxd_container_alias: ubuntu/trusty/amd64
-  - lxd_container_alias: ubuntu/precise/amd64
   - lxd_container_alias: debian/stretch/amd64
   - lxd_container_alias: debian/jessie/amd64
   - lxd_container_alias: debian/wheezy/amd64

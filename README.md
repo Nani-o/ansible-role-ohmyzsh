@@ -10,9 +10,9 @@ Compatibility
 
   - CentOS 6
   - CentOS 7
-  - Ubuntu 12.04
-  - Ubuntu 14.04
-  - Ubuntu 16.04
+  - Ubuntu 14
+  - Ubuntu 16
+  - Ubuntu 17
   - Debian 7
   - Debian 8
   - Debian 9
