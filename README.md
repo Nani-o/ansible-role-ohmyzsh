@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Nani-o/ansible-role-ohmyzsh.svg?branch=master)](https://travis-ci.org/Nani-o/ansible-role-ohmyzsh)
+
 ohmyzsh
 =======
 

@@ -1,0 +1,12 @@
+---
+- hosts: container
+  tasks:
+    - name: Check Oh-My-Zsh folder
+      file:
+        path: /root/.oh-my-zsh
+        state: directory
+      register: install_check
+
+    - name: Fail if no install folder 
+      fail:
+      when: "install_check | changed"

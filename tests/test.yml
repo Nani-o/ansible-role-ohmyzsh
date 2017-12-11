@@ -1,0 +1,7 @@
+---
+- hosts: container
+  vars:
+    ohmyzsh_users:
+      - root
+  roles:
+    - role-to-test
