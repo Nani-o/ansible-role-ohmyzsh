@@ -2,6 +2,7 @@
 - name: Get users home folders
   shell: "grep '^{{ user }}:' /etc/passwd | awk -F ':' '{print $6}'"
   register: home_folder
+  changed_when: false
 
 - name: Set home folders variable
   set_fact:
