@@ -1,8 +1,7 @@
 ---
 - name: Install packages
   package:
-    name: git
+    name:
+      - git
+      - zsh
     state: latest
-  with_items:
-    - git
-    - zsh
