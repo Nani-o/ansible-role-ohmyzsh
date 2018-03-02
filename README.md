@@ -12,7 +12,7 @@ Compatibility
   - CentOS 7
   - Ubuntu 14
   - Ubuntu 16
-  - Ubuntu 17
+  - Ubuntu 18
   - Debian 7
   - Debian 8
   - Debian 9

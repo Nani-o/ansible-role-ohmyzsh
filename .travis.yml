@@ -8,12 +8,12 @@ sudo: true
 env:
   - lxd_container_alias: centos/7/amd64
   - lxd_container_alias: centos/6/amd64
-  - lxd_container_alias: ubuntu/zesty/amd64
-  - lxd_container_alias: ubuntu/xenial/amd64
-  - lxd_container_alias: ubuntu/trusty/amd64
-  - lxd_container_alias: debian/stretch/amd64
-  - lxd_container_alias: debian/jessie/amd64
-  - lxd_container_alias: debian/wheezy/amd64
+  - lxd_container_alias: ubuntu/18.04/amd64
+  - lxd_container_alias: ubuntu/16.04/amd64
+  - lxd_container_alias: ubuntu/14.04/amd64
+  - lxd_container_alias: debian/9/amd64
+  - lxd_container_alias: debian/8/amd64
+  - lxd_container_alias: debian/7/amd64
 
 install:
   # Cloning testing template
