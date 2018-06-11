@@ -6,14 +6,14 @@ python: "2.7"
 sudo: true
 
 env:
-  - lxd_container_alias: centos/7/amd64
-  - lxd_container_alias: centos/6/amd64
-  - lxd_container_alias: ubuntu/18.04/amd64
-  - lxd_container_alias: ubuntu/16.04/amd64
-  - lxd_container_alias: ubuntu/14.04/amd64
-  - lxd_container_alias: debian/9/amd64
-  - lxd_container_alias: debian/8/amd64
-  - lxd_container_alias: debian/7/amd64
+  - test_os: centos7
+  - test_os: centos6
+  - test_os: ubuntu18.04
+  - test_os: ubuntu16.04
+  - test_os: ubuntu14.04
+  - test_os: debian9
+  - test_os: debian8
+  - test_os: debian7
 
 install:
   # Cloning testing template
