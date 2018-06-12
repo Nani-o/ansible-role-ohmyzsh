@@ -20,7 +20,9 @@
     src: "{{ home_folder }}/.oh-my-zsh/templates/zshrc.zsh-template"
     dest: "{{ home_folder }}/.zshrc"
     backup: yes
-  when: "not git_update.before"
+  when:
+    - "not git_update.before"
+    - "ohmyzsh_install_default_zshrc"
 
 - name: Change user shell to zsh
   user:

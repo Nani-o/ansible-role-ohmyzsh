@@ -1,0 +1,9 @@
+---
+- name: Download plugins
+  git:
+    repo: "{{ item.1 }}"
+    dest: "{{ home_folder }}/.oh-my-zsh/custom/{{ item.0 }}{{ (item.1 | basename | splitext)[0] }}"
+  register: git_update
+  with_items:
+    - "{{ query('nested', ['plugins'], ohmyzsh_plugins_repos) }}"
+    - "{{ query('nested', ['themes'], ohmyzsh_themes_repos) }}"

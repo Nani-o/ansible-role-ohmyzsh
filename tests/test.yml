@@ -3,5 +3,10 @@
   vars:
     ohmyzsh_users:
       - root
+    ohmyzsh_default_zshrc: true
+    ohmyzsh_plugins_repos:
+      - https://github.com/oldratlee/hacker-quotes
+    ohmyzsh_themes_repos:
+      - https://github.com/bhilburn/powerlevel9k.git
   roles:
     - role-to-test

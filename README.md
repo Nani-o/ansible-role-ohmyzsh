@@ -30,6 +30,33 @@ ohmyzsh_users:
   - alice
 ```
 
+- ohmyzsh_install_default_zshrc
+
+If set to true, installs default ohmyzsh ~/.zshrc from ~/.oh-my-zsh/templates/zshrc.zsh-template only upon the first clone of the ohmyzsh repo.
+If a ~/.zshrc  already exists, it is backuped.
+
+```YAML
+ohmyzsh_install_default_zshrc: true
+```
+
+- ohmyzsh_plugins_repos
+
+List of git repositories of ohmyzsh plugins to installs.
+
+```YAML
+ohmyzsh_plugins_repos:
+  - https://github.com/oldratlee/hacker-quotes
+```
+
+- ohmyzsh_themes_repos
+
+List of git repositories of ohmyzsh themes to installs.
+
+```YAML
+ohmyzsh_themes_repos:
+  - https://github.com/bhilburn/powerlevel9k
+```
+
 Example Playbook
 ----------------
 
