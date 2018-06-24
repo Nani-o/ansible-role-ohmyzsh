@@ -9,4 +9,4 @@
 
     - name: Fail if no install folder 
       fail:
-      when: "install_check | changed"
+      when: install_check is changed
