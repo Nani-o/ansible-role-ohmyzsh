@@ -11,7 +11,7 @@ env:
   - test_os: ubuntu18.04
   - test_os: ubuntu16.04
   - test_os: debian9
-  - test_os: debian7
+  - test_os: debian8
 
 install:
   # Cloning testing template
