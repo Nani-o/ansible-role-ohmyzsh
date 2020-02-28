@@ -6,8 +6,8 @@ python: "3.6"
 sudo: true
 
 env:
+  - test_os: centos8
   - test_os: centos7
-  - test_os: centos6
   - test_os: ubuntu18.04
   - test_os: ubuntu16.04
   - test_os: debian9
