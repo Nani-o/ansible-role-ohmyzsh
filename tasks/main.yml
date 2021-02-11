@@ -1,6 +1,7 @@
 ---
 # Install required packages
 - import_tasks: packages.yml
+  when: "ansible_facts['os_family'] != 'Darwin'"
   tags:
     - ohmyzsh
     - ohmyzsh_requirements
