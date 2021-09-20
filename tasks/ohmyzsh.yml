@@ -1,6 +1,6 @@
 ---
 - name: Get users home folders
-  shell: "grep '^{{ user }}:' /etc/passwd | awk -F ':' '{print $6}'"
+  shell: "su - {{ user }} -c 'echo $HOME'"
   register: home_folder
   changed_when: false
 
