@@ -1,6 +1,7 @@
 ---
 - name: Get users home folders
-  shell: "su - {{ user }} -c 'echo $HOME'"
+  shell: "echo $HOME"
+  become_user: "{{ user }}"
   register: home_folder
   changed_when: false
 
