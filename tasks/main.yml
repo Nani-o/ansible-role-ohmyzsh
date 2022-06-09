@@ -16,7 +16,7 @@
     - ohmyzsh_install
 
 # Downloads plugins
-- import_tasks: plugins.yml
+- include_tasks: plugins.yml
   loop: "{{ ohmyzsh_users }}"
   loop_control:
     loop_var: user
