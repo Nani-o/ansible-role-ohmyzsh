@@ -1,6 +1,7 @@
 ---
 # Install required packages
 - import_tasks: packages.yml
+  become: True
   when: "ansible_facts['os_family'] != 'Darwin'"
   tags:
     - ohmyzsh
@@ -8,7 +9,8 @@
 
 # Install ohmyzsh
 - include_tasks: ohmyzsh.yml
-  with_items: "{{ ohmyzsh_users }}"
+  become: True
+  loop: "{{ ohmyzsh_users }}"
   loop_control:
     loop_var: user
   tags:
@@ -17,6 +19,10 @@
 
 # Downloads plugins
 - import_tasks: plugins.yml
+  become: True
+  loop: "{{ ohmyzsh_users }}"
+  loop_control:
+    loop_var: user
   tags:
     - ohmyzsh
     - ohmyzsh_plugins
