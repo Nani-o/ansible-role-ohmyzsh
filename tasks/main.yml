@@ -14,12 +14,4 @@
   tags:
     - ohmyzsh
     - ohmyzsh_install
-
-# Downloads plugins
-- include_tasks: plugins.yml
-  loop: "{{ ohmyzsh_users }}"
-  loop_control:
-    loop_var: user
-  tags:
-    - ohmyzsh
-    - ohmyzsh_plugins
+...

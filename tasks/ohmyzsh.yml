@@ -1,19 +1,15 @@
 ---
-- name: Get users home folders
-  shell: "echo $HOME"
-  become_user: "{{ user }}"
-  register: home_folder
-  changed_when: false
+- getent:
+    database: passwd
+    key: "{{ user }}"
+    split: ":"
 
 - name: Set home folders variable
   set_fact:
-    home_folder: "{{ home_folder.stdout }}"
+    home_folder: "{{ getent_passwd[user][4] }}"
 
-- name: Checkout git repo
-  git:
-    repo: https://github.com/robbyrussell/oh-my-zsh
-    dest: "{{ home_folder }}/.oh-my-zsh"
-  register: git_update
+- shell: "git -C {{ home_folder }}/.oh-my-zsh pull || git clone https://github.com/robbyrussell/oh-my-zsh {{ home_folder }}/.oh-my-zsh"
+  become: True
   become_user: "{{ user }}"
 
 - name: Backup old zsh config
@@ -22,12 +18,20 @@
     src: "{{ home_folder }}/.oh-my-zsh/templates/zshrc.zsh-template"
     dest: "{{ home_folder }}/.zshrc"
     backup: yes
-  when:
-    - "not git_update.before"
-    - "ohmyzsh_install_default_zshrc"
+  become: True
+  become_user: "{{ user }}"
+  when: "ohmyzsh_install_default_zshrc"
 
 - name: Change user shell to zsh
   user:
     name: "{{ user }}"
     shell: /bin/zsh
+  become: True
+  become_user: "root"
+
+- name: Download plugins
+  shell: "git -C {{ home_folder }}/.oh-my-zsh/custom/{{ item.0 }}/{{ (item.1 | basename | splitext)[0] }} pull || git clone {{ item.1 }} {{ home_folder }}/.oh-my-zsh/custom/{{ item.0 }}/{{ (item.1 | basename | splitext)[0] }}"
+  become: True
+  become_user: "{{ user }}"
+  loop: "{{ query('nested', ['plugins'], ohmyzsh_plugins_repos | default([])) + query('nested', ['themes'], ohmyzsh_themes_repos | default([])) }}"
 ...
