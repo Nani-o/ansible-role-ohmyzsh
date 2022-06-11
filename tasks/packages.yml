@@ -5,3 +5,5 @@
       - git
       - zsh
     state: latest
+  become: True
+  become_user: root
