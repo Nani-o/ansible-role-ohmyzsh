@@ -8,6 +8,7 @@
         home_folder: "{{ dscache_output.stdout }}"
   when: "ansible_os_family == 'Darwin'"
 
+- block:
     - getent:
         database: passwd
         key: "{{ user }}"
