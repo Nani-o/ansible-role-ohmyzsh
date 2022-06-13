@@ -1,7 +1,7 @@
 ---
 - block:
     - shell: "dscacheutil -q user -a name {{ user }} | grep 'dir:' | cut -d ' ' -f 2"
-    register: dscache_output
+      register: dscache_output
 
     - name: Set home folders variable
       set_fact:
