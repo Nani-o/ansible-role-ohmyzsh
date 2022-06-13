@@ -1,12 +1,23 @@
 ---
-- getent:
-    database: passwd
-    key: "{{ user }}"
-    split: ":"
+- block:
+    - shell: "dscacheutil -q user -a name {{ user }} | grep "dir:" | cut -d " " -f 2"
+    register: dscache_output
 
-- name: Set home folders variable
-  set_fact:
-    home_folder: "{{ getent_passwd[user][4] }}"
+    - name: Set home folders variable
+      set_fact:
+        home_folder: "{{ dscache_output.stdout }}"
+  when: "ansible_os_family == 'Darwin'"
+
+    - getent:
+        database: passwd
+        key: "{{ user }}"
+        split: ":"
+      when: "ansible_os_family == 'Darwin'"
+
+    - name: Set home folders variable
+      set_fact:
+        home_folder: "{{ getent_passwd[user][4] }}"
+  when: "ansible_os_family != 'Darwin'"
 
 - shell: "git -C {{ home_folder }}/.oh-my-zsh pull || git clone https://github.com/robbyrussell/oh-my-zsh {{ home_folder }}/.oh-my-zsh"
   become: True
