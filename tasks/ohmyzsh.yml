@@ -13,7 +13,6 @@
         database: passwd
         key: "{{ user }}"
         split: ":"
-      when: "ansible_os_family == 'Darwin'"
 
     - name: Set home folders variable
       set_fact:
